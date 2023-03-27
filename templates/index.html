@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block styles%}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content%}
+<div class="container">
+
+<div class="core">
+
+
+    <form id="create_short" class="form-inline short-url-input-form" method="post" novalidate>
+
+    <!-- print validation error -->
+    {% for field, errors in form.errors.items() %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p>
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              {{ ', '.join(errors) }}
+          </p>
+        </div>
+    {% endfor %}
+
+    {{ form.csrf_token}}
+        <h3>Past your URL: </h3>
+        <div class="input-group">
+            {{ form.url(placeholder='Insert url to short it!', class_='form-control', size='50')}}
+          <span class="input-group-btn">
+              <button class=" full-width btn btn-info " type="submit" form="create_short">Short it!</button>
+            </span>
+        </div>
+
+
+    </form>
+
+
+
+</div>
+</div>
+{% endblock%}

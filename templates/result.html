@@ -1,0 +1,42 @@
+{% extends 'bootstrap/base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block styles%}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" xmlns="http://www.w3.org/1999/html">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content%}
+<div class="container">
+    <div class="core">
+        <div class="short-url-input-form">
+            <h3>Short URL:</h3>
+            <div class="input-group">
+                <input id="short-url" class="form-control" type="text" value="{{ short }}" size="25" ></input>
+              <span class="input-group-btn">
+                      <button id="btn-copy" class="full-width btn btn-info" onclick="copyShortFunc()">
+                          Copy</button>
+              </span>
+            </div>
+            <div class="input-group">
+                 <span>This is the URL you shortened: <a href="{{ long }}">{{long}}</a> </span><br>
+                 <a href="{{url_for('index')}}">Short another url</a>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+{% endblock%}
+
+{% block scripts%}
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+<script src="{{url_for('static', filename='javascript/copy.js')}}"></script>
+{{super()}}
+{% endblock%}

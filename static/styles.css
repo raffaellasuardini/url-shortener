@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+}
+
+.container{
+    height: 100vh;
+}
+
+.core{
+    height:70%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.short-url-input-form{
+    align-self: center;
+}
+.width-min{
+    width: min-content;
+}
+
+
+
+@media(max-width: 768px) {
+    button.full-width {
+        width: 100%;
+        align-self: center;
+    }
+}
+
